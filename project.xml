@@ -1,0 +1,7 @@
+<project>
+    <haxelib name="openfl"/>
+    <haxelib name="openfl-glsl"/>
+    <haxelib name="vector-math"/>
+    <source path="Source"/>
+    <assets path="Assets" rename="assets"/>
+</project>
