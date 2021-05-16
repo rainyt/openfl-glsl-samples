@@ -10,7 +10,8 @@ class Main extends Sprite {
 		bitmap.bitmapData = Assets.getBitmapData("assets/img.png");
 		this.addChild(bitmap);
 
-		bitmap.shader = new glsl.BitmapGLSL();
+        // 从这里更换GLSL目标
+		bitmap.shader = new glsl.BitmapGLSL4();
 		bitmap.addEventListener(Event.ENTER_FRAME, function(e) {
 			bitmap.invalidate();
 		});
