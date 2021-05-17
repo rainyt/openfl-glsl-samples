@@ -1,5 +1,5 @@
 ## OpenFL Samples
-在这里有运行(openfl-glsl)[https://github.com/rainyt/openfl-glsl]的示例。
+在这里有运行[openfl-glsl](https://github.com/rainyt/openfl-glsl)的示例。
 
 ## 运行Main.hx
 ```haxe
