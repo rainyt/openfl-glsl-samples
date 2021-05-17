@@ -10,7 +10,7 @@ class VertexGLSL extends OpenFLShader {
 	/**
 	 * 定义varying
 	 */
-	@:varying public var textureCoords:Vec2;
+	@:varying public var textureCoords:Array<Vec2>;
 
 	/**
 	 * 实现顶点着色器
@@ -18,7 +18,10 @@ class VertexGLSL extends OpenFLShader {
 	@:define("VALUE 0.5")
 	override function vertex() {
 		super.vertex();
-		textureCoords = vec2(VALUE, sin(time));
+		textureCoords[0] = vec2(VALUE, sin(time));
+		textureCoords[1] = vec2(VALUE, sin(time));
+		textureCoords[2] = vec2(VALUE, sin(time));
+		textureCoords[3] = vec2(VALUE, sin(time));
 	}
 
 	/**
@@ -26,7 +29,7 @@ class VertexGLSL extends OpenFLShader {
 	 */
 	override function fragment() {
 		super.fragment();
-		gl_FragColor = vec4(textureCoords, sin(time), 1);
+		gl_FragColor = vec4(textureCoords[0], sin(time), 1);
 	}
 
 	public function new() {
