@@ -25,10 +25,10 @@ class BitmapGLSL4 extends OpenFLShader {
 	public function new() {
 		super();
 		this.u_time.value = [0];
-		Lib.setInterval(update, 0);
+		this.setFrameEvent(true);
 	}
 
-	public function update():Void {
+	override public function onFrame():Void {
 		this.u_time.value[0]++;
 	}
 }

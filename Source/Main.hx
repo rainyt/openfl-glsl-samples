@@ -15,7 +15,7 @@ class Main extends Sprite {
 		this.addChild(bitmap);
 
 		// 从这里更换GLSL目标
-		bitmap.shader = new glsl.BitmapGLSL2();
+		bitmap.shader = new glsl.VertexGLSL();
 		bitmap.addEventListener(Event.ENTER_FRAME, function(e) {
 			bitmap.invalidate();
 		});
