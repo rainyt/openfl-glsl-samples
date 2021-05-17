@@ -1,3 +1,4 @@
+import glsl.BitmapGLSL2;
 import glsl.BitmapGLSL5;
 import openfl.display.ShaderParameter;
 import openfl.events.MouseEvent;
@@ -14,10 +15,11 @@ class Main extends Sprite {
 		this.addChild(bitmap);
 
 		// 从这里更换GLSL目标
-		bitmap.shader = new glsl.LightEffect();
+		bitmap.shader = new glsl.BitmapGLSL2();
 		bitmap.addEventListener(Event.ENTER_FRAME, function(e) {
 			bitmap.invalidate();
 		});
+		// 新增鼠标事件
 		stage.addEventListener(MouseEvent.MOUSE_MOVE, function(e:MouseEvent) {
 			if (Reflect.field(bitmap.shader, "u_mouse")) {
 				Reflect.getProperty(bitmap.shader, "u_mouse").value = [bitmap.mouseX, bitmap.mouseY];
