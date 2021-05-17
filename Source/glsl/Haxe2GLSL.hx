@@ -7,7 +7,6 @@ import VectorMath.vec4;
  * 使用Haxe转换为GLSL，通过fragmentSource和vertexSource进行访问
  */
 @:debug
-@:build(glsl.macro.GLSLCompileMacro.build("glsl"))
 class Haxe2GLSL extends BaseGLSL {
 	@:define("TEXT 1")
 	public function fragment():Void {
@@ -19,6 +18,7 @@ class Haxe2GLSL extends BaseGLSL {
 	}
 }
 
+@:autoBuild(glsl.macro.GLSLCompileMacro.build("glsl"))
 class BaseGLSL {
 	/**
 	 * 最终值输出
