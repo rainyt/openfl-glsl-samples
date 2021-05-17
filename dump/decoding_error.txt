@@ -1,0 +1,83 @@
+[{
+	access: [APublic]
+	doc: null
+	kind: FFun({
+		args: []
+		expr: {
+			expr: EBlock([{
+				expr: EBinop(OpAssign, {
+					expr: EField({
+						expr: EConst(CIdent(this))
+						pos: #pos
+					}, gl_FragColor)
+					pos: #pos
+				}, {
+					expr: ECall({
+						expr: EConst(CIdent(vec4))
+						pos: #pos
+					}, [{
+						expr: ECall({
+							expr: EConst(CIdent(float))
+							pos: #pos
+						}, [{
+							expr: EConst(CIdent(TEXT))
+							pos: #pos
+						}])
+						pos: #pos
+					}, {
+						expr: EConst(CFloat(1.))
+						pos: #pos
+					}, {
+						expr: EConst(CFloat(0.))
+						pos: #pos
+					}, {
+						expr: EConst(CFloat(1.))
+						pos: #pos
+					}])
+					pos: #pos
+				})
+				pos: #pos
+			}])
+			pos: #pos
+		}
+		params: []
+		ret: TPath({
+			name: Void
+			pack: []
+			params: []
+			sub: null
+		})
+	})
+	meta: [{
+		name: :define
+		params: [{
+			expr: EConst(CString(TEXT 1, DoubleQuotes))
+			pos: #pos
+		}]
+		pos: #pos
+	}]
+	name: fragment
+	pos: #pos
+}, {
+	access: [APublic]
+	doc: null
+	kind: FVar(TPath({
+		name: Dynamic
+		pack: []
+		params: []
+		sub: null
+	}), null)
+	meta: []
+	name: TEXT
+	pos: #pos
+}, {
+	access: null
+	doc: null
+	kind: null <- expected value
+	meta: null
+	name: null <- expected value
+	pos: null <- expected value
+}]
+line 76: expected value
+line 78: expected value
+line 79: expected value
