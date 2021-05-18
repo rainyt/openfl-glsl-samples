@@ -6,7 +6,6 @@ import VectorMath;
 /**
  * 圆形遮罩
  */
-@:debug
 class CircleMaskGLSL extends OpenFLShader {
 	@:uniform public var scale:Float;
 
