@@ -27,7 +27,5 @@ class Main extends Sprite {
 		// Haxe To GLSL
 		trace(Haxe2GLSL.fragmentSource);
 		trace(Haxe2GLSL.vertexSource);
-		// var hx2glsl = glsl.Haxe2GLSL.fragment();
-		// trace("hx2glsl=",hx2glsl);
 	}
 }

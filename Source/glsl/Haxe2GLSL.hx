@@ -8,6 +8,9 @@ import VectorMath.vec4;
  */
 @:debug
 class Haxe2GLSL extends BaseGLSL {
+
+    @:attribute public var a:Vec2;
+
 	@:define("TEXT 1")
 	public function fragment():Void {
 		this.gl_FragColor = vec4(float(TEXT), 1., 0., 1.);
