@@ -3,7 +3,6 @@ package glsl;
 import glsl.GLSL;
 import VectorMath;
 
-@:debug
 class VertexGLSL2 extends OpenFLShader {
 	@:uniform public var time:Float;
 
