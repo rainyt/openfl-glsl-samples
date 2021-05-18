@@ -13,7 +13,11 @@ class Haxe2GLSL extends BaseGLSL {
 
 	@:define("TEXT 1")
 	public function fragment():Void {
-		this.gl_FragColor = vec4(float(TEXT), 1., 0., 1.);
+        time++;
+        --time;
+        if(!(time > 10 || time < 30 && time != 0)){
+		    this.gl_FragColor = vec4(float(TEXT), 1., 0., 1.);
+        }
 	}
 
 	public function vertex():Void {
@@ -23,6 +27,15 @@ class Haxe2GLSL extends BaseGLSL {
 
 @:autoBuild(glsl.macro.GLSLCompileMacro.build("glsl"))
 class BaseGLSL {
+
+    @:uniform public var time:Float = 0;
+
+    @:uniform public var mouse:Vec2;
+
+    @:uniform public var resolution:Vec2;
+
+    @:glsl public var abc:Float = 0;
+
 	/**
 	 * 最终值输出
 	 */
