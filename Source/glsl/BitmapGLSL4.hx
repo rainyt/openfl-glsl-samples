@@ -1,6 +1,5 @@
 package glsl;
 
-import openfl.Lib;
 import VectorMath;
 
 class BitmapGLSL4 extends OpenFLShader {

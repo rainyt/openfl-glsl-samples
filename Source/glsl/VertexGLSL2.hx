@@ -1,9 +1,7 @@
 package glsl;
 
 import glsl.GLSL;
-import openfl.Lib;
 import VectorMath;
-import glsl.GLSL;
 
 @:debug
 class VertexGLSL2 extends OpenFLShader {
@@ -12,7 +10,7 @@ class VertexGLSL2 extends OpenFLShader {
 	/**
 	 * 定义varying
 	 */
-	@:varying public var texcolor:Vec4;
+	@:varying public var size:Float;
 
 	/**
 	 * 实现顶点着色器
@@ -20,8 +18,7 @@ class VertexGLSL2 extends OpenFLShader {
 	@:define("VALUE 0.5")
 	override function vertex() {
 		super.vertex();
-		// texcolor = vec4(gl_openfl_TextureCoordv,1., 1.);
-		// texcolor = vec4(gl_openfl_Position.x / gl_openfl_TextureSize.x,0.,0., 1.);
+		size = 5.;
 	}
 
 	/**
@@ -29,7 +26,12 @@ class VertexGLSL2 extends OpenFLShader {
 	 */
 	override function fragment() {
 		super.fragment();
-		// gl_FragColor = 
+		var px:Float = size / gl_openfl_TextureSize.x;
+		var py:Float = size / gl_openfl_TextureSize.y;
+		if (gl_openfl_TextureCoordv.x < px || gl_openfl_TextureCoordv.x > 1. - px || gl_openfl_TextureCoordv.y < py || gl_openfl_TextureCoordv.y > 1. - py) {
+			gl_FragColor = vec4(1, 0, 0, 1);
+		} else
+			gl_FragColor = texture2D(gl_openfl_Texture, fract(gl_openfl_TextureCoordv * -1));
 	}
 
 	public function new() {

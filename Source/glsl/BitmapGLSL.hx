@@ -1,6 +1,5 @@
 package glsl;
 
-import openfl.Lib;
 import glsl.GLSL;
 import VectorMath;
 

@@ -1,7 +1,6 @@
 package glsl;
 
 import glsl.GLSL;
-import openfl.Lib;
 import VectorMath;
 
 class LightPointRotation extends OpenFLShader {
