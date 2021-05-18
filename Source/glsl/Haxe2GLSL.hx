@@ -41,15 +41,15 @@ class Haxe2GLSL extends BaseGLSL {
 
 @:autoBuild(glsl.macro.GLSLCompileMacro.build("glsl"))
 class BaseGLSL {
-	@:uniform public var time:Float = 0;
+	@:uniform public var time:Float;
 
 	@:uniform public var mouse:Vec2;
 
 	@:uniform public var resolution:Vec2;
 
-	@:glsl public var abc:Float = 100;
+	@:glsl public var abc:Float;
 
-	@:glsl public var b:Bool = false;
+	@:glsl public var b:Bool;
 
 	/**
 	 * 最终值输出

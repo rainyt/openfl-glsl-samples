@@ -1,3 +1,4 @@
+import glsl.BitmapGLSL6;
 import glsl.Haxe2GLSL;
 import openfl.events.MouseEvent;
 import openfl.events.Event;
@@ -13,7 +14,7 @@ class Main extends Sprite {
 		this.addChild(bitmap);
 
 		// 从这里更换GLSL目标
-		bitmap.shader = new glsl.VertexGLSL();
+		bitmap.shader = new glsl.BitmapGLSL6();
 		bitmap.addEventListener(Event.ENTER_FRAME, function(e) {
 			bitmap.invalidate();
 		});
