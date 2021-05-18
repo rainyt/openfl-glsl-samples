@@ -1,0 +1,5 @@
+--class-path Source
+--main HaxeBuild
+--library vector-math
+--library openfl-glsl
+-D output=./bin

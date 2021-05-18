@@ -1,7 +1,10 @@
 package glsl;
 
-import glsl.OpenFLShader.float;
 import VectorMath.vec4;
+
+function float(a:Dynamic):Dynamic{
+	return a;
+}
 
 /**
  * 使用Haxe转换为GLSL，通过fragmentSource和vertexSource进行访问
