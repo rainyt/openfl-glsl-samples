@@ -8,16 +8,31 @@ import VectorMath.vec4;
  */
 @:debug
 class Haxe2GLSL extends BaseGLSL {
-
-    @:attribute public var a:Vec2;
+	@:attribute public var a:Vec2;
 
 	@:define("TEXT 1")
 	public function fragment():Void {
-        time++;
-        --time;
-        if(!(time > 10 || time < 30 && time != 0)){
-		    this.gl_FragColor = vec4(float(TEXT), 1., 0., 1.);
+		time++;
+		--time;
+		if (!(time > 10 || time < 30 && time != 0)) {
+			this.gl_FragColor = vec4(float(TEXT), 1., 0., 1.);
+		}
+        else if(time == 0){
+            gl_FragColor = vec4(1,1,0.5,1);
         }
+        else{
+            gl_FragColor = vec4(1,1,1,1);
+        }
+		var w:Float = 0;
+		while (w < 100) {
+			for (i in 0...10) {
+				w++;
+			}
+		}
+        // Int
+        var w2 = 1;
+        // Float
+        var w3 = 1.;
 	}
 
 	public function vertex():Void {
@@ -27,14 +42,13 @@ class Haxe2GLSL extends BaseGLSL {
 
 @:autoBuild(glsl.macro.GLSLCompileMacro.build("glsl"))
 class BaseGLSL {
+	@:uniform public var time:Float = 0;
 
-    @:uniform public var time:Float = 0;
+	@:uniform public var mouse:Vec2;
 
-    @:uniform public var mouse:Vec2;
+	@:uniform public var resolution:Vec2;
 
-    @:uniform public var resolution:Vec2;
-
-    @:glsl public var abc:Float = 0;
+	@:glsl public var abc:Float = 0;
 
 	/**
 	 * 最终值输出
