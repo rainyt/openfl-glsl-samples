@@ -1,3 +1,4 @@
+import glsl.VertexGLSL2;
 import glsl.BitmapGLSL;
 import glsl.BitmapGLSL2;
 import glsl.BitmapGLSL3;
@@ -17,12 +18,20 @@ import openfl.display.Sprite;
 class Main extends Sprite {
 	public function new() {
 		super();
+
+		var bitmap2 = new Bitmap();
+		bitmap2.bitmapData = Assets.getBitmapData("assets/img.png");
+
+		var spr:Sprite = new Sprite();
 		var bitmap = new Bitmap();
 		bitmap.bitmapData = Assets.getBitmapData("assets/img.png");
-		this.addChild(bitmap);
+		spr.addChild(bitmap);
+		this.addChild(spr);
+
+		this.addChild(bitmap2);
 
 		// 从这里更换GLSL目标
-		bitmap.shader = new glsl.BitmapGLSL6();
+		bitmap.shader = new glsl.VertexGLSL2();
 		bitmap.addEventListener(Event.ENTER_FRAME, function(e) {
 			bitmap.invalidate();
 		});
@@ -33,8 +42,20 @@ class Main extends Sprite {
 			}
 		});
 
+		spr.x = 300;
+		spr.y = 300;
+
 		// Haxe To GLSL
 		trace(Haxe2GLSL.fragmentSource);
 		trace(Haxe2GLSL.vertexSource);
+
+		this.addEventListener(Event.ADDED_TO_STAGE, function(e) {
+			stage.addEventListener(MouseEvent.MOUSE_DOWN, function(e) {
+				spr.startDrag();
+			});
+			stage.addEventListener(MouseEvent.MOUSE_UP, function(e) {
+				spr.stopDrag();
+			});
+		});
 	}
 }

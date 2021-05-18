@@ -1,7 +1,7 @@
 package glsl;
 
 import openfl.Lib;
-import glsl.OpenFLShader.texture2D;
+import glsl.GLSL;
 import VectorMath;
 
 class BitmapGLSL extends OpenFLShader {

@@ -1,6 +1,6 @@
 package glsl;
 
-import VectorMath.vec4;
+import VectorMath;
 
 function float(a:Dynamic):Dynamic{
 	return a;

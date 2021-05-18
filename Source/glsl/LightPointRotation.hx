@@ -1,6 +1,6 @@
 package glsl;
 
-import glsl.OpenFLShader.float;
+import glsl.GLSL;
 import openfl.Lib;
 import VectorMath;
 
