@@ -9,6 +9,17 @@ import VectorMath;
 class RoundMaskGLSL extends OpenFLShader {
 	@:uniform public var px:Vec4;
 
+	/**
+	 * 检查点是否在圆的范围内
+	 * @param x 检索圆心X
+	 * @param y 检索圆心Y
+	 * @param size 圆的半径
+	 * @return Bool
+	 */
+	@:glsl public function checkRound(x:Float, y:Float, size:Float):Bool {
+		return distance(vec2(x, y), gl_openfl_TextureCoordv.xy) < size;
+	}
+
 	override function fragment() {
 		super.fragment();
 		// 左
@@ -19,23 +30,11 @@ class RoundMaskGLSL extends OpenFLShader {
 		var zsize:Float = radians(px.z);
 		// 右下
 		var wsize:Float = radians(px.w);
-		if (distance(vec2(xsize, xsize), gl_openfl_TextureCoordv.xy) < xsize) {
+		if (checkRound(xsize, xsize, xsize) || checkRound(1 - ysize, ysize, ysize) || checkRound(zsize, 1 - zsize, zsize)
+			|| checkRound(1 - wsize, 1 - wsize, wsize))
 			gl_FragColor = color;
-		} else {
-			if (distance(vec2(1 - ysize, ysize), gl_openfl_TextureCoordv.xy) < ysize) {
-				gl_FragColor = color;
-			} else {
-				if (distance(vec2(zsize, 1 - zsize), gl_openfl_TextureCoordv.xy) < zsize) {
-					gl_FragColor = color;
-				} else {
-					if (distance(vec2(1 - wsize, 1 - wsize), gl_openfl_TextureCoordv.xy) < wsize) {
-						gl_FragColor = color;
-					} else {
-						gl_FragColor = vec4(0, 0, 0, 0);
-					}
-				}
-			}
-		}
+		else
+			gl_FragColor = vec4(0);
 		// 矩形补充
 		// 左上角
 		if ((gl_openfl_TextureCoordv.x > xsize || gl_openfl_TextureCoordv.y > xsize)
