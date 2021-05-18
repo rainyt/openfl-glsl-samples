@@ -38,24 +38,24 @@ class RoundMaskGLSL extends OpenFLShader {
 		}
 		// 矩形补充
 		// 左上角
-		if (gl_openfl_TextureCoordv.x > xsize && gl_openfl_TextureCoordv.x < 0.5 && gl_openfl_TextureCoordv.y < 0.5) {
-			gl_FragColor = color;
-		} else if (gl_openfl_TextureCoordv.y > xsize && gl_openfl_TextureCoordv.x < 0.5 && gl_openfl_TextureCoordv.y < 0.5) {
-			gl_FragColor = color;
-		}
-		if (gl_openfl_TextureCoordv.x < 1 - ysize && gl_openfl_TextureCoordv.x > 0.5 && gl_openfl_TextureCoordv.y < 0.5) {
-			gl_FragColor = color;
-		} else if (gl_openfl_TextureCoordv.y > ysize && gl_openfl_TextureCoordv.x > 0.5 && gl_openfl_TextureCoordv.y < 0.5) {
+		if ((gl_openfl_TextureCoordv.x > xsize || gl_openfl_TextureCoordv.y > xsize)
+			&& gl_openfl_TextureCoordv.x < 0.5
+			&& gl_openfl_TextureCoordv.y < 0.5) {
 			gl_FragColor = color;
 		}
-		if (gl_openfl_TextureCoordv.x > zsize && gl_openfl_TextureCoordv.x < 0.5 && gl_openfl_TextureCoordv.y > 0.5) {
-			gl_FragColor = color;
-		} else if (gl_openfl_TextureCoordv.y < 1 - zsize && gl_openfl_TextureCoordv.x < 0.5 && gl_openfl_TextureCoordv.y > 0.5) {
+		if ((gl_openfl_TextureCoordv.x < 1 - ysize || gl_openfl_TextureCoordv.y > ysize)
+			&& gl_openfl_TextureCoordv.x > 0.5
+			&& gl_openfl_TextureCoordv.y < 0.5) {
 			gl_FragColor = color;
 		}
-		if (gl_openfl_TextureCoordv.x < 1 - wsize && gl_openfl_TextureCoordv.x > 0.5 && gl_openfl_TextureCoordv.y > 0.5) {
+		if ((gl_openfl_TextureCoordv.x > zsize || gl_openfl_TextureCoordv.y < 1 - zsize)
+			&& gl_openfl_TextureCoordv.x < 0.5
+			&& gl_openfl_TextureCoordv.y > 0.5) {
 			gl_FragColor = color;
-		} else if (gl_openfl_TextureCoordv.y < 1 - wsize && gl_openfl_TextureCoordv.x > 0.5 && gl_openfl_TextureCoordv.y > 0.5) {
+		}
+		if ((gl_openfl_TextureCoordv.x < 1 - wsize || gl_openfl_TextureCoordv.y < 1 - wsize)
+			&& gl_openfl_TextureCoordv.x > 0.5
+			&& gl_openfl_TextureCoordv.y > 0.5) {
 			gl_FragColor = color;
 		}
 	}

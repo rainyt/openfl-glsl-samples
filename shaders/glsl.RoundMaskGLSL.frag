@@ -31,41 +31,21 @@ void main(void){#pragma body
     };
     ;
   };
-  if(openfl_TextureCoordv.x>xsize && openfl_TextureCoordv.x<0.5 && openfl_TextureCoordv.y<0.5){
+  if((openfl_TextureCoordv.x>xsize || openfl_TextureCoordv.y>xsize) && openfl_TextureCoordv.x<0.5 && openfl_TextureCoordv.y<0.5){
     gl_FragColor=color;
     ;
-  }else{
-    if(openfl_TextureCoordv.y>xsize && openfl_TextureCoordv.x<0.5 && openfl_TextureCoordv.y<0.5){
-      gl_FragColor=color;
-      ;
-    };
   };
-  if(openfl_TextureCoordv.x<1.-ysize && openfl_TextureCoordv.x>0.5 && openfl_TextureCoordv.y<0.5){
+  if((openfl_TextureCoordv.x<1.-ysize || openfl_TextureCoordv.y>ysize) && openfl_TextureCoordv.x>0.5 && openfl_TextureCoordv.y<0.5){
     gl_FragColor=color;
     ;
-  }else{
-    if(openfl_TextureCoordv.y>ysize && openfl_TextureCoordv.x>0.5 && openfl_TextureCoordv.y<0.5){
-      gl_FragColor=color;
-      ;
-    };
   };
-  if(openfl_TextureCoordv.x>zsize && openfl_TextureCoordv.x<0.5 && openfl_TextureCoordv.y>0.5){
+  if((openfl_TextureCoordv.x>zsize || openfl_TextureCoordv.y<1.-zsize) && openfl_TextureCoordv.x<0.5 && openfl_TextureCoordv.y>0.5){
     gl_FragColor=color;
     ;
-  }else{
-    if(openfl_TextureCoordv.y<1.-zsize && openfl_TextureCoordv.x<0.5 && openfl_TextureCoordv.y>0.5){
-      gl_FragColor=color;
-      ;
-    };
   };
-  if(openfl_TextureCoordv.x<1.-wsize && openfl_TextureCoordv.x>0.5 && openfl_TextureCoordv.y>0.5){
+  if((openfl_TextureCoordv.x<1.-wsize || openfl_TextureCoordv.y<1.-wsize) && openfl_TextureCoordv.x>0.5 && openfl_TextureCoordv.y>0.5){
     gl_FragColor=color;
     ;
-  }else{
-    if(openfl_TextureCoordv.y<1.-wsize && openfl_TextureCoordv.x>0.5 && openfl_TextureCoordv.y>0.5){
-      gl_FragColor=color;
-      ;
-    };
   };
   
 }
