@@ -16,23 +16,22 @@ class Haxe2GLSL extends BaseGLSL {
 		--time;
 		if (!(time > 10 || time < 30 && time != 0)) {
 			this.gl_FragColor = vec4(float(TEXT), 1., 0., 1.);
+		} else if (time == 0) {
+			gl_FragColor = vec4(1, 1, 0.5, 1);
+		} else {
+			gl_FragColor = vec4(1, 1, 1, 1);
 		}
-        else if(time == 0){
-            gl_FragColor = vec4(1,1,0.5,1);
-        }
-        else{
-            gl_FragColor = vec4(1,1,1,1);
-        }
 		var w:Float = 0;
 		while (w < 100) {
 			for (i in 0...10) {
 				w++;
 			}
 		}
-        // Int
-        var w2 = 1;
-        // Float
-        var w3 = 1.;
+		// Int
+		var w2 = 1;
+		// Float
+		var w3 = 1.;
+		w3 += abc;
 	}
 
 	public function vertex():Void {
@@ -48,7 +47,9 @@ class BaseGLSL {
 
 	@:uniform public var resolution:Vec2;
 
-	@:glsl public var abc:Float = 0;
+	@:glsl public var abc:Float = 100;
+
+	@:glsl public var b:Bool = false;
 
 	/**
 	 * 最终值输出
