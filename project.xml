@@ -4,4 +4,5 @@
     <haxelib name="vector-math"/>
     <source path="Source"/>
     <assets path="Assets" rename="assets"/>
+    <define name="output" value="bin"/>
 </project>
