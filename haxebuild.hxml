@@ -2,4 +2,4 @@
 --main HaxeBuild
 --library vector-math
 --library openfl-glsl
--D output=./bin
+-D output=./shaders
