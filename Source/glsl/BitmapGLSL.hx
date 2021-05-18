@@ -4,7 +4,6 @@ import openfl.Lib;
 import glsl.OpenFLShader.texture2D;
 import VectorMath;
 
-@:debug
 class BitmapGLSL extends OpenFLShader {
 	@:uniform public var time:Float;
 

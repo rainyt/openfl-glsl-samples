@@ -3,7 +3,6 @@ package glsl;
 import openfl.Lib;
 import VectorMath;
 
-@:debug
 class BitmapGLSL3 extends OpenFLShader{
     @:uniform public var time:Float;
 

@@ -1,5 +1,13 @@
+import glsl.BitmapGLSL;
+import glsl.BitmapGLSL2;
+import glsl.BitmapGLSL3;
+import glsl.BitmapGLSL4;
+import glsl.BitmapGLSL5;
 import glsl.BitmapGLSL6;
 import glsl.Haxe2GLSL;
+import glsl.VertexGLSL;
+import glsl.LightEffect;
+import glsl.LightPointRotation;
 import openfl.events.MouseEvent;
 import openfl.events.Event;
 import openfl.utils.Assets;

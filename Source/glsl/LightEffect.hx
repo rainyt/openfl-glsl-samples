@@ -3,7 +3,6 @@ package glsl;
 import openfl.Lib;
 import VectorMath;
 
-@:debug
 class LightEffect extends OpenFLShader {
 	@:uniform public var time:Float;
 

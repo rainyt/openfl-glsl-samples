@@ -1,6 +1,5 @@
 package glsl;
 
-@:debug
 class MouseGLSL extends OpenFLShader {
 	@:uniform public var mouse:Vec2;
 

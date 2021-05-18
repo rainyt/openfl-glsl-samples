@@ -6,7 +6,6 @@ import VectorMath.vec4;
 /**
  * 使用Haxe转换为GLSL，通过fragmentSource和vertexSource进行访问
  */
-@:debug
 class Haxe2GLSL extends BaseGLSL {
 	@:attribute public var a:Vec2;
 

@@ -4,7 +4,6 @@ import glsl.OpenFLShader.float;
 import openfl.Lib;
 import VectorMath;
 
-@:debug
 class LightPointRotation extends OpenFLShader {
 	@:uniform public var time:Float;
 
