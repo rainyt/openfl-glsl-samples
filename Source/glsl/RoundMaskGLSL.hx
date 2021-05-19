@@ -3,9 +3,8 @@ package glsl;
 import VectorMath;
 
 /**
- * 圆角遮罩
+ * 圆角遮罩，可以设置四个角的圆角大小
  */
-@:debug
 class RoundMaskGLSL extends OpenFLShader {
 	@:uniform public var px:Vec4;
 
@@ -70,7 +69,7 @@ class RoundMaskGLSL extends OpenFLShader {
 	 * @param leftbottom 左下
 	 * @param rightbottom 右下
 	 */
-	public function new(lefttop:Float = 50, righttop:Float = 50, leftbottom:Float = 50, rightbottom:Float = 50) {
+	public function new(lefttop:Float = 16, righttop:Float = 16, leftbottom:Float = 16, rightbottom:Float = 16) {
 		super();
 		u_px.value = [lefttop, righttop, leftbottom, rightbottom];
 	}

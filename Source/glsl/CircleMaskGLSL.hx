@@ -4,7 +4,7 @@ import glsl.GLSL.texture2D;
 import VectorMath;
 
 /**
- * 圆形遮罩
+ * 圆形遮罩，正中间的圆形渲染
  */
 class CircleMaskGLSL extends OpenFLShader {
 	@:uniform public var scale:Float;

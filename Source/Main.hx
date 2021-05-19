@@ -1,3 +1,5 @@
+import openfl.text.TextFormat;
+import openfl.text.TextField;
 import glsl.CircleMaskGLSL;
 import glsl.RoundMaskGLSL;
 import glsl.VertexGLSL2;
@@ -25,13 +27,23 @@ class Main extends Sprite {
 		bitmap2.bitmapData = Assets.getBitmapData("assets/img.png");
 		this.addChild(bitmap2);
 
-
 		var spr:Sprite = new Sprite();
 		var bitmap = new Bitmap();
 		bitmap.bitmapData = Assets.getBitmapData("assets/adtest.png");
 		spr.addChild(bitmap);
 		this.addChild(spr);
 
+		// 文本渲染
+		var text:TextField = new TextField();
+		this.addChild(text);
+		text.text = "测试文案";
+		text.x = 500;
+		text.y = 300;
+		text.setTextFormat(new TextFormat(null, 32));
+		text.width = 300;
+		text.height = 300;
+		text.mouseEnabled = false;
+		text.shader = new glsl.TextGLSL();
 
 		// 从这里更换GLSL目标
 		bitmap.shader = new glsl.CircleMaskGLSL();
