@@ -13,6 +13,7 @@ import glsl.Haxe2GLSL;
 import glsl.VertexGLSL;
 import glsl.LightEffect;
 import glsl.LightPointRotation;
+import glsl.TiledGLSL;
 import openfl.events.MouseEvent;
 import openfl.events.Event;
 import openfl.utils.Assets;
@@ -24,8 +25,11 @@ class Main extends Sprite {
 		super();
 
 		var bitmap2 = new Bitmap();
-		bitmap2.bitmapData = Assets.getBitmapData("assets/img.png");
+		bitmap2.bitmapData = Assets.getBitmapData("assets/3.png");
 		this.addChild(bitmap2);
+		bitmap2.shader = new glsl.TiledGLSL(stage.stageWidth,stage.stageHeight);
+		bitmap2.width = stage.stageWidth;
+		bitmap2.height = stage.stageHeight;
 
 		var spr:Sprite = new Sprite();
 		var bitmap = new Bitmap();
@@ -46,7 +50,7 @@ class Main extends Sprite {
 		text.shader = new glsl.TextGLSL();
 
 		// 从这里更换GLSL目标
-		bitmap.shader = new glsl.CircleMaskGLSL();
+		bitmap.shader = new glsl.TextGLSL(3);
 		bitmap.addEventListener(Event.ENTER_FRAME, function(e) {
 			bitmap.invalidate();
 		});
