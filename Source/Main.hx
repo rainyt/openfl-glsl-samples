@@ -32,6 +32,13 @@ class Main extends Sprite {
 		bitmap2.width = stage.stageWidth;
 		bitmap2.height = stage.stageHeight;
 
+		var bitmap3 = new Bitmap();
+		bitmap3.bitmapData = Assets.getBitmapData("assets/img.png");
+		this.addChild(bitmap3);
+		bitmap3.shader = new glsl.RoundMaskGLSL(10,30,50,30);
+		bitmap3.x = 700;
+		bitmap3.y = 300;
+
 		var slice = new Bitmap();
 		slice.bitmapData = Assets.getBitmapData("assets/slice.png");
 		this.addChild(slice);
@@ -54,9 +61,11 @@ class Main extends Sprite {
 		text.mouseEnabled = false;
 		text.shader = new glsl.TextGLSL(2, 0xff00ff);
 
+		
+
 		// 从这里更换GLSL目标
-		bitmap.scaleX = 3;
-		bitmap.scaleY = 3;
+		bitmap.scaleX = 1;
+		bitmap.scaleY = 1;
 		bitmap.shader = new glsl.S9GLSL(52, 53, 73, 52, bitmap.width, bitmap.height);
 		bitmap.addEventListener(Event.ENTER_FRAME, function(e) {
 			bitmap.invalidate();

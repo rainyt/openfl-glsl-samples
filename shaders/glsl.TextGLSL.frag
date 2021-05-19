@@ -1,4 +1,6 @@
 #pragma header
+uniform vec3 u_textcolor;
+uniform float u_storksize;
 bool inAlpha(vec2 v2,float offestX,float offestY){
   return texture2D(openfl_Texture,v2+vec2(offestX,offestY)).a>0.;
 }
@@ -15,8 +17,6 @@ bool circleCheck(vec2 v2,float len){
   }
   return false;
 }
-uniform vec3 u_textcolor;
-uniform float u_storksize;
 void main(void){#pragma body
   for(int i = 0;i<10;i++){
     if(float(i)>u_storksize){

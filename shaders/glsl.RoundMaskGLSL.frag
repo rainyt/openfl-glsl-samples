@@ -1,8 +1,8 @@
 #pragma header
+uniform vec4 u_px;
 bool checkRound(float x,float y,float size){
   return distance(vec2(x,y)*openfl_TextureSize,openfl_TextureCoordv.xy*openfl_TextureSize)<size*openfl_TextureSize.x;
 }
-uniform vec4 u_px;
 void main(void){#pragma body
   float xsize=u_px.x/openfl_TextureSize.x;
   float xsize_y=u_px.x/openfl_TextureSize.y;

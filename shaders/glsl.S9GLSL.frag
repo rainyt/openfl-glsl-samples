@@ -1,9 +1,9 @@
 #pragma header
+uniform vec2 u_size;
+uniform vec4 u_s9d;
 vec2 getUv(float x,float y){
   return vec2(x/openfl_TextureSize.x,y/openfl_TextureSize.y);
 }
-uniform vec2 u_size;
-uniform vec4 u_s9d;
 void main(void){#pragma body
   vec2 uv=openfl_TextureCoordv*u_size;
   float centerWidth=u_size.x-u_s9d.x-u_s9d.y;
