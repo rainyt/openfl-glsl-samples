@@ -17,46 +17,50 @@ class RoundMaskGLSL extends OpenFLShader {
 	 * @return Bool
 	 */
 	@:glsl public function checkRound(x:Float, y:Float, size:Float):Bool {
-		return distance(vec2(x, y), gl_openfl_TextureCoordv.xy) < size;
+		return distance(vec2(x, y) * gl_openfl_TextureSize, gl_openfl_TextureCoordv.xy * gl_openfl_TextureSize) < size * gl_openfl_TextureSize.x;
 	}
 
 	override function fragment() {
 		super.fragment();
 		// 左
-		var xsize:Float = radians(px.x);
+		var xsize:Float = px.x / gl_openfl_TextureSize.x;
+		var xsize_y:Float = px.x / gl_openfl_TextureSize.y;
 		// 右
-		var ysize:Float = radians(px.y);
+		var ysize:Float = px.y / gl_openfl_TextureSize.x;
+		var ysize_y:Float = px.y / gl_openfl_TextureSize.y;
 		// 左下
-		var zsize:Float = radians(px.z);
+		var zsize:Float = px.z / gl_openfl_TextureSize.x;
+		var zsize_y:Float = px.z / gl_openfl_TextureSize.y;
 		// 右下
-		var wsize:Float = radians(px.w);
-		if (checkRound(xsize, xsize, xsize) || checkRound(1 - ysize, ysize, ysize) || checkRound(zsize, 1 - zsize, zsize)
-			|| checkRound(1 - wsize, 1 - wsize, wsize))
-			gl_FragColor = color;
-		else
-			gl_FragColor = vec4(0);
+		var wsize:Float = px.w / gl_openfl_TextureSize.x;
+		var wsize_y:Float = px.w / gl_openfl_TextureSize.y;
 		// 矩形补充
-		// 左上角
-		if ((gl_openfl_TextureCoordv.x > xsize || gl_openfl_TextureCoordv.y > xsize)
+		gl_FragColor = vec4(0);
+		if ((gl_openfl_TextureCoordv.x > xsize || gl_openfl_TextureCoordv.y > xsize_y)
 			&& gl_openfl_TextureCoordv.x < 0.5
 			&& gl_openfl_TextureCoordv.y < 0.5) {
 			gl_FragColor = color;
 		}
-		if ((gl_openfl_TextureCoordv.x < 1 - ysize || gl_openfl_TextureCoordv.y > ysize)
+		if ((gl_openfl_TextureCoordv.x < 1 - ysize || gl_openfl_TextureCoordv.y > ysize_y)
 			&& gl_openfl_TextureCoordv.x > 0.5
 			&& gl_openfl_TextureCoordv.y < 0.5) {
 			gl_FragColor = color;
 		}
-		if ((gl_openfl_TextureCoordv.x > zsize || gl_openfl_TextureCoordv.y < 1 - zsize)
+		if ((gl_openfl_TextureCoordv.x > zsize || gl_openfl_TextureCoordv.y < 1 - zsize_y)
 			&& gl_openfl_TextureCoordv.x < 0.5
 			&& gl_openfl_TextureCoordv.y > 0.5) {
 			gl_FragColor = color;
 		}
-		if ((gl_openfl_TextureCoordv.x < 1 - wsize || gl_openfl_TextureCoordv.y < 1 - wsize)
+		if ((gl_openfl_TextureCoordv.x < 1 - wsize || gl_openfl_TextureCoordv.y < 1 - wsize_y)
 			&& gl_openfl_TextureCoordv.x > 0.5
 			&& gl_openfl_TextureCoordv.y > 0.5) {
 			gl_FragColor = color;
 		}
+		if (checkRound(xsize, xsize_y, xsize)
+			|| checkRound(1 - ysize, ysize_y, ysize)
+			|| checkRound(zsize, 1 - zsize_y, zsize)
+			|| checkRound(1 - wsize, 1 - wsize_y, wsize))
+			gl_FragColor = color;
 	}
 
 	/**
@@ -66,7 +70,7 @@ class RoundMaskGLSL extends OpenFLShader {
 	 * @param leftbottom 左下
 	 * @param rightbottom 右下
 	 */
-	public function new(lefttop:Float = 8, righttop:Float = 8, leftbottom:Float = 8, rightbottom:Float = 8) {
+	public function new(lefttop:Float = 50, righttop:Float = 50, leftbottom:Float = 50, rightbottom:Float = 50) {
 		super();
 		u_px.value = [lefttop, righttop, leftbottom, rightbottom];
 	}

@@ -22,14 +22,15 @@ class Main extends Sprite {
 
 		var bitmap2 = new Bitmap();
 		bitmap2.bitmapData = Assets.getBitmapData("assets/img.png");
+		this.addChild(bitmap2);
+
 
 		var spr:Sprite = new Sprite();
 		var bitmap = new Bitmap();
-		bitmap.bitmapData = Assets.getBitmapData("assets/img.png");
+		bitmap.bitmapData = Assets.getBitmapData("assets/adtest.png");
 		spr.addChild(bitmap);
 		this.addChild(spr);
 
-		this.addChild(bitmap2);
 
 		// 从这里更换GLSL目标
 		bitmap.shader = new glsl.RoundMaskGLSL();
