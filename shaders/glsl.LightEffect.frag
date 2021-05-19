@@ -1,7 +1,6 @@
 #pragma header
 #define r openfl_TextureSize.xy
 uniform float u_time;
-
 void main(void){#pragma body
   color=vec4(0.,0.,0.,1.);
   vec3 c=vec3(0.,0.,0.);
@@ -16,8 +15,6 @@ void main(void){#pragma body
     l=length(p);
     uv+=p/l*(sin(z)+1.)*abs(sin(l*9.-z*2.));
     c[null]=.01/length(abs(mod(uv,1.)-.5));
-    
-  };
+  }
   gl_FragColor=vec4(c/l,u_time);
-  
 }
