@@ -43,11 +43,11 @@ class Main extends Sprite {
 		text.text = "测试文案";
 		text.x = 500;
 		text.y = 300;
-		text.setTextFormat(new TextFormat(null, 32));
-		text.width = 300;
+		text.setTextFormat(new TextFormat(null, 120));
+		text.width = 600;
 		text.height = 300;
 		text.mouseEnabled = false;
-		text.shader = new glsl.TextGLSL();
+		text.shader = new glsl.TextGLSL(1,0xff00ff);
 
 		// 从这里更换GLSL目标
 		bitmap.shader = new glsl.LightEffect();

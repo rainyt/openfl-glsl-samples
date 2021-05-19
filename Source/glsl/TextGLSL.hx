@@ -10,6 +10,7 @@ import VectorMath;
 @:debug
 class TextGLSL extends OpenFLShader {
 	@:uniform public var storksize:Float;
+	@:uniform public var textcolor:Vec3;
 
 	/**
 	 * 检测当前这个点的偏移位置是否包含透明度
@@ -46,17 +47,20 @@ class TextGLSL extends OpenFLShader {
 			if (float(i) > storksize)
 				break;
 			if (circleCheck(gl_openfl_TextureCoordv, float(i))) {
-				gl_FragColor = vec4(1., 1., 0., 1.);
+				gl_FragColor = vec4(textcolor, 1.);
 				if (color.a > 0.) {
-					gl_FragColor = color;
-					gl_FragColor.w = 1.;
+					gl_FragColor = vec4(color.rgb, 1);
 				}
 			}
 		}
 	}
 
-	public function new(size:Float = 1.5) {
+	public function new(size:Float = 1.5, color:UInt = 0x0) {
 		super();
 		u_storksize.value = [size];
+		var r = (color >> 16) & 0xFF;
+		var g = (color >> 8) & 0xFF;
+		var b = color & 0xFF;
+		u_textcolor.value = [r, g, b];
 	}
 }

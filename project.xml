@@ -5,5 +5,5 @@
     <source path="Source"/>
     <assets path="Assets" rename="assets"/>
     <define name="output" value="./shaders"/>
-    <window />
+    <window allow-high-dpi="true"/>
 </project>

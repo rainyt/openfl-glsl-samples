@@ -15,6 +15,7 @@ bool circleCheck(vec2 v2,float len){
   }
   return false;
 }
+uniform vec3 u_textcolor;
 uniform float u_storksize;
 void main(void){#pragma body
   for(int i = 0;i<5;i++){
@@ -22,10 +23,9 @@ void main(void){#pragma body
       break;
     }
     if(circleCheck(openfl_TextureCoordv,float(i))){
-      gl_FragColor=vec4(1.,1.,0.,1.);
+      gl_FragColor=vec4(u_textcolor,1.);
       if(color.a>0.){
-        gl_FragColor=color;
-        gl_FragColor.w=1.;
+        gl_FragColor=vec4(color.rgb,1);
       }
     }
   }
