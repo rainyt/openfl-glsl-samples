@@ -32,9 +32,9 @@ void main(void){#pragma body
       if(color.a>0.){
         gl_FragColor=color;
         gl_FragColor.w=1.;
-        ;
+        
       };
-      ;
+      
     };
     
   };

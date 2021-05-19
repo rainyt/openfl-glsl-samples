@@ -18,22 +18,22 @@ void main(void){#pragma body
   gl_FragColor=vec4(0.);
   if((openfl_TextureCoordv.x>xsize || openfl_TextureCoordv.y>xsize_y) && openfl_TextureCoordv.x<0.5 && openfl_TextureCoordv.y<0.5){
     gl_FragColor=color;
-    ;
-  };
+    
+  }
   if((openfl_TextureCoordv.x<1.-ysize || openfl_TextureCoordv.y>ysize_y) && openfl_TextureCoordv.x>0.5 && openfl_TextureCoordv.y<0.5){
     gl_FragColor=color;
-    ;
-  };
+    
+  }
   if((openfl_TextureCoordv.x>zsize || openfl_TextureCoordv.y<1.-zsize_y) && openfl_TextureCoordv.x<0.5 && openfl_TextureCoordv.y>0.5){
     gl_FragColor=color;
-    ;
-  };
+    
+  }
   if((openfl_TextureCoordv.x<1.-wsize || openfl_TextureCoordv.y<1.-wsize_y) && openfl_TextureCoordv.x>0.5 && openfl_TextureCoordv.y>0.5){
     gl_FragColor=color;
-    ;
-  };
+    
+  }
   if(checkRound(xsize,xsize_y,xsize) || checkRound(1.-ysize,ysize_y,ysize) || checkRound(zsize,1.-zsize_y,zsize) || checkRound(1.-wsize,1.-wsize_y,wsize)){
     gl_FragColor=color;
-  };
+  }
   
 }

@@ -27,7 +27,7 @@ class Main extends Sprite {
 		var bitmap2 = new Bitmap();
 		bitmap2.bitmapData = Assets.getBitmapData("assets/3.png");
 		this.addChild(bitmap2);
-		bitmap2.shader = new glsl.TiledGLSL(stage.stageWidth,stage.stageHeight);
+		bitmap2.shader = new glsl.TiledGLSL(stage.stageWidth, stage.stageHeight);
 		bitmap2.width = stage.stageWidth;
 		bitmap2.height = stage.stageHeight;
 
