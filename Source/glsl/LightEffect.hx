@@ -26,7 +26,7 @@ class LightEffect extends OpenFLShader {
 			uv += p / l * (sin(z) + 1.) * abs(sin(l * 9. - z * 2.));
 			c[i] = .01 / length(abs(mod(uv, 1.) - .5));
 		}
-		gl_FragColor = vec4(c / l, time);
+		gl_FragColor = vec4(c / l, 1);
 	}
 
 	public function new() {
