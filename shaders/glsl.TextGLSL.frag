@@ -18,7 +18,7 @@ bool circleCheck(vec2 v2,float len){
 uniform vec3 u_textcolor;
 uniform float u_storksize;
 void main(void){#pragma body
-  for(int i = 0;i<5;i++){
+  for(int i = 0;i<10;i++){
     if(float(i)>u_storksize){
       break;
     }

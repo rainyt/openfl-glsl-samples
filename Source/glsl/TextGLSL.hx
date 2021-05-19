@@ -43,7 +43,7 @@ class TextGLSL extends OpenFLShader {
 
 	override function fragment() {
 		super.fragment();
-		for (i in 0...5) {
+		for (i in 0...10) {
 			if (float(i) > storksize)
 				break;
 			if (circleCheck(gl_openfl_TextureCoordv, float(i))) {

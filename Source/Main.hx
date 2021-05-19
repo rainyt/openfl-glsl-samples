@@ -1,3 +1,4 @@
+import glsl.S9GLSL;
 import openfl.text.TextFormat;
 import openfl.text.TextField;
 import glsl.CircleMaskGLSL;
@@ -31,9 +32,13 @@ class Main extends Sprite {
 		bitmap2.width = stage.stageWidth;
 		bitmap2.height = stage.stageHeight;
 
+		var slice = new Bitmap();
+		slice.bitmapData = Assets.getBitmapData("assets/slice.png");
+		this.addChild(slice);
+
 		var spr:Sprite = new Sprite();
 		var bitmap = new Bitmap();
-		bitmap.bitmapData = Assets.getBitmapData("assets/adtest.png");
+		bitmap.bitmapData = Assets.getBitmapData("assets/slice.png");
 		spr.addChild(bitmap);
 		this.addChild(spr);
 
@@ -47,10 +52,12 @@ class Main extends Sprite {
 		text.width = 600;
 		text.height = 300;
 		text.mouseEnabled = false;
-		text.shader = new glsl.TextGLSL(1,0xff00ff);
+		text.shader = new glsl.TextGLSL(2, 0xff00ff);
 
 		// 从这里更换GLSL目标
-		bitmap.shader = new glsl.LightEffect();
+		bitmap.scaleX = 3;
+		bitmap.scaleY = 3;
+		bitmap.shader = new glsl.S9GLSL(52, 53, 73, 52, bitmap.width, bitmap.height);
 		bitmap.addEventListener(Event.ENTER_FRAME, function(e) {
 			bitmap.invalidate();
 		});
