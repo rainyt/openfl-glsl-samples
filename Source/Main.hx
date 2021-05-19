@@ -1,3 +1,4 @@
+import glsl.CircleMaskGLSL;
 import glsl.RoundMaskGLSL;
 import glsl.VertexGLSL2;
 import glsl.BitmapGLSL;
@@ -33,7 +34,7 @@ class Main extends Sprite {
 
 
 		// 从这里更换GLSL目标
-		bitmap.shader = new glsl.RoundMaskGLSL();
+		bitmap.shader = new glsl.CircleMaskGLSL();
 		bitmap.addEventListener(Event.ENTER_FRAME, function(e) {
 			bitmap.invalidate();
 		});

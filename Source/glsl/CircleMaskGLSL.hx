@@ -11,7 +11,8 @@ class CircleMaskGLSL extends OpenFLShader {
 
 	override function fragment() {
 		super.fragment();
-		if (distance(vec2(0.5), gl_openfl_TextureCoordv.xy) < scale * 0.5) {
+		var len:Float = gl_openfl_TextureSize.x < gl_openfl_TextureSize.y ? gl_openfl_TextureSize.x : gl_openfl_TextureSize.y;
+		if (distance(vec2(0.5) * gl_openfl_TextureSize, gl_openfl_TextureCoordv.xy * gl_openfl_TextureSize) < len * 0.5) {
 			gl_FragColor = texture2D(gl_openfl_Texture, gl_openfl_TextureCoordv);
 		} else {
 			gl_FragColor = vec4(0);
