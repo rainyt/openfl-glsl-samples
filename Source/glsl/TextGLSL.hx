@@ -7,7 +7,6 @@ import VectorMath;
 /**
  * 文本描边渲染支持
  */
-@:debug
 class TextGLSL extends OpenFLShader {
 	@:uniform public var storksize:Float;
 	@:uniform public var textcolor:Vec3;

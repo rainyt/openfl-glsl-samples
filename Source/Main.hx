@@ -11,6 +11,7 @@ import glsl.BitmapGLSL3;
 import glsl.BitmapGLSL4;
 import glsl.BitmapGLSL5;
 import glsl.BitmapGLSL6;
+import glsl.AttributesGLSL;
 import glsl.Haxe2GLSL;
 import glsl.VertexGLSL;
 import glsl.LightEffect;
@@ -21,6 +22,7 @@ import openfl.events.Event;
 import openfl.utils.Assets;
 import openfl.display.Bitmap;
 import openfl.display.Sprite;
+import openfl.Vector;
 
 class Main extends Sprite {
 	public function new() {
@@ -36,7 +38,7 @@ class Main extends Sprite {
 		var bitmap3 = new Bitmap();
 		bitmap3.bitmapData = Assets.getBitmapData("assets/img.png");
 		this.addChild(bitmap3);
-		bitmap3.shader = new glsl.RoundMaskGLSL(10,30,50,30);
+		bitmap3.shader = new glsl.RoundMaskGLSL(10, 30, 50, 30);
 		bitmap3.x = 700;
 		bitmap3.y = 300;
 
@@ -65,8 +67,7 @@ class Main extends Sprite {
 		// 从这里更换GLSL目标
 		bitmap.scaleX = 2;
 		bitmap.scaleY = 2;
-		bitmap.shader = new CircleCdGLSL();
-		bitmap.rotation = 90;
+		bitmap.shader = new AttributesGLSL();
 		bitmap.addEventListener(Event.ENTER_FRAME, function(e) {
 			bitmap.invalidate();
 		});
@@ -77,8 +78,19 @@ class Main extends Sprite {
 			}
 		});
 
-		spr.x = 300;
-		spr.y = 300;
+		var spr2:Sprite = new Sprite();
+		this.addChild(spr2);
+		var imgbitmap = Assets.getBitmapData("assets/img.png");
+		spr2.graphics.beginShaderFill(new AttributesGLSL());
+		var v1:Array<Float> = [0, 0, imgbitmap.width, 0, imgbitmap.width, imgbitmap.height, 0, imgbitmap.height];
+		var v2:Array<Int> = [0, 1, 2, 2, 3, 0];
+		var v3:Array<Float> = [0, 0, 1, 0, 1, 1, 0, 1];
+		spr2.graphics.drawTriangles(ofArray(v1), ofArray(v2), ofArray(v3));
+		spr2.graphics.endFill();
+		spr2.x = 500;
+		spr2.y = 200;
+		spr2.mouseChildren = false;
+		spr2.mouseEnabled = false;
 
 		// Haxe To GLSL
 		trace(Haxe2GLSL.fragmentSource);
@@ -92,5 +104,15 @@ class Main extends Sprite {
 				spr.stopDrag();
 			});
 		});
+	}
+
+	@:generic public inline static function ofArray<T>(array:Array<T>):Vector<T> {
+		var vector:Vector<T> = new Vector<T>();
+
+		for (i in 0...array.length) {
+			vector[i] = cast array[i];
+		}
+
+		return vector;
 	}
 }

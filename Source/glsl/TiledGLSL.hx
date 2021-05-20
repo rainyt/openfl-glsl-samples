@@ -6,7 +6,6 @@ import glsl.GLSL.texture2D;
 /**
  * 瓦片平铺GLSL
  */
-@:debug
 class TiledGLSL extends OpenFLShader {
 	@:uniform public var time:Float;
 	@:uniform public var size:Vec2;
