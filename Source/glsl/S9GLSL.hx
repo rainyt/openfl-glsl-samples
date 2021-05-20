@@ -50,11 +50,11 @@ class S9GLSL extends OpenFLShader {
 				getUv(s9d.x + centerSliceWidth + uv.x - (size.x - s9d.y), centerSliceHeight + s9d.z + uv.y - (size.y - s9d.w)));
 		} else if (uv.y < s9d.z) {
 			// 上
-			gl_FragColor = texture2D(gl_openfl_Texture, getUv(s9d.x + (uv.y - s9d.z) / centerWidth * centerSliceWidth, uv.y));
+			gl_FragColor = texture2D(gl_openfl_Texture, getUv(s9d.x + (uv.x - s9d.z) / centerWidth * centerSliceWidth, uv.y));
 		} else if (uv.y > size.y - s9d.w) {
 			// 下
 			gl_FragColor = texture2D(gl_openfl_Texture,
-				getUv(s9d.x + (uv.y - s9d.z) / centerWidth * centerSliceWidth, centerSliceHeight + s9d.z + uv.y - (size.y - s9d.w)));
+				getUv(s9d.x + (uv.x - s9d.z) / centerWidth * centerSliceWidth, centerSliceHeight + s9d.z + uv.y - (size.y - s9d.w)));
 		} else if (uv.x <= s9d.x) {
 			// 左(ok)
 			gl_FragColor = texture2D(gl_openfl_Texture, getUv(uv.x, s9d.z + (uv.y - s9d.z) / centerHeight * centerSliceHeight));
@@ -65,7 +65,7 @@ class S9GLSL extends OpenFLShader {
 		} else {
 			// 中间
 			gl_FragColor = texture2D(gl_openfl_Texture,
-				getUv(s9d.x + (uv.y - s9d.z) / centerWidth * centerSliceWidth, s9d.z + (uv.y - s9d.z) / centerHeight * centerSliceHeight));
+				getUv(s9d.x + (uv.x - s9d.z) / centerWidth * centerSliceWidth, s9d.z + (uv.y - s9d.z) / centerHeight * centerSliceHeight));
 		}
 	}
 

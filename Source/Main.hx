@@ -64,8 +64,8 @@ class Main extends Sprite {
 		
 
 		// 从这里更换GLSL目标
-		bitmap.scaleX = 1;
-		bitmap.scaleY = 1;
+		bitmap.scaleX = 10;
+		bitmap.scaleY = 10;
 		bitmap.shader = new glsl.S9GLSL(52, 53, 73, 52, bitmap.width, bitmap.height);
 		bitmap.addEventListener(Event.ENTER_FRAME, function(e) {
 			bitmap.invalidate();
