@@ -1,3 +1,4 @@
+import glsl.CircleCdGLSL;
 import glsl.S9GLSL;
 import openfl.text.TextFormat;
 import openfl.text.TextField;
@@ -62,9 +63,10 @@ class Main extends Sprite {
 		text.shader = new glsl.TextGLSL(1, 0x9b3e00);
 
 		// 从这里更换GLSL目标
-		bitmap.scaleX = 10;
-		bitmap.scaleY = 10;
-		bitmap.shader = new glsl.S9GLSL(52, 53, 73, 52, bitmap.width, bitmap.height);
+		bitmap.scaleX = 2;
+		bitmap.scaleY = 2;
+		bitmap.shader = new CircleCdGLSL();
+		bitmap.rotation = 90;
 		bitmap.addEventListener(Event.ENTER_FRAME, function(e) {
 			bitmap.invalidate();
 		});
