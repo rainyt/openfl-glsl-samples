@@ -67,7 +67,7 @@ class Main extends Sprite {
 		// 从这里更换GLSL目标
 		bitmap.scaleX = 2;
 		bitmap.scaleY = 2;
-		bitmap.shader = new AttributesGLSL();
+		bitmap.shader = new RoundMaskGLSL();
 		bitmap.addEventListener(Event.ENTER_FRAME, function(e) {
 			bitmap.invalidate();
 		});
@@ -78,17 +78,22 @@ class Main extends Sprite {
 			}
 		});
 
+		
 		var spr2:Sprite = new Sprite();
 		this.addChild(spr2);
 		var imgbitmap = Assets.getBitmapData("assets/img.png");
-		spr2.graphics.beginShaderFill(new AttributesGLSL());
-		var v1:Array<Float> = [0, 0, imgbitmap.width, 0, imgbitmap.width, imgbitmap.height, 0, imgbitmap.height];
+		var shader = new AttributesGLSL();
+		shader.data.openfl_Texture.input = imgbitmap;
+		shader.u_bitmapData.input = imgbitmap;
+		spr2.graphics.beginShaderFill(shader);
+		
+		var v1:Array<Float> = [0, 0, imgbitmap.width * 0.8, 0, imgbitmap.width, imgbitmap.height, 0, imgbitmap.height];
 		var v2:Array<Int> = [0, 1, 2, 2, 3, 0];
 		var v3:Array<Float> = [0, 0, 1, 0, 1, 1, 0, 1];
 		spr2.graphics.drawTriangles(ofArray(v1), ofArray(v2), ofArray(v3));
 		spr2.graphics.endFill();
 		spr2.x = 500;
-		spr2.y = 200;
+		spr2.y = 600;
 		spr2.mouseChildren = false;
 		spr2.mouseEnabled = false;
 
