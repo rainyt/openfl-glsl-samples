@@ -24,9 +24,6 @@ void main(void){#pragma body
     }
     if(circleCheck(openfl_TextureCoordv,float(i))){
       gl_FragColor=vec4(u_textcolor,1.);
-      if(color.a>0.){
-        gl_FragColor=vec4(color.rgb,1);
-      }
     }
   }
 }

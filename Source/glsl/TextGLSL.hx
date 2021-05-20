@@ -48,9 +48,9 @@ class TextGLSL extends OpenFLShader {
 				break;
 			if (circleCheck(gl_openfl_TextureCoordv, float(i))) {
 				gl_FragColor = vec4(textcolor, 1.);
-				if (color.a > 0.) {
-					gl_FragColor = vec4(color.rgb, 1);
-				}
+				// if (color.a > 0.) {
+				// 	gl_FragColor = vec4(color.rgb, 1);
+				// }
 			}
 		}
 	}
@@ -61,6 +61,6 @@ class TextGLSL extends OpenFLShader {
 		var r = (color >> 16) & 0xFF;
 		var g = (color >> 8) & 0xFF;
 		var b = color & 0xFF;
-		u_textcolor.value = [r, g, b];
+		u_textcolor.value = [r / 255, g / 255, b / 255];
 	}
 }
