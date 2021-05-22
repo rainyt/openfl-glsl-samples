@@ -1,3 +1,5 @@
+import openfl.display.GraphicsShader;
+import openfl.display.FPS;
 import glsl.CircleCdGLSL;
 import glsl.S9GLSL;
 import openfl.text.TextFormat;
@@ -53,16 +55,16 @@ class Main extends Sprite {
 		this.addChild(spr);
 
 		// 文本渲染
-		var text:TextField = new TextField();
-		this.addChild(text);
-		text.text = "测试文案";
-		text.x = 500;
-		text.y = 300;
-		text.setTextFormat(new TextFormat(null, 120, 0x9b3e00));
-		text.width = 600;
-		text.height = 300;
-		text.mouseEnabled = false;
-		text.shader = new glsl.TextGLSL(1, 0x9b3e00);
+		// var text:TextField = new TextField();
+		// this.addChild(text);
+		// text.text = "测试文案";
+		// text.x = 500;
+		// text.y = 300;
+		// text.setTextFormat(new TextFormat(null, 120, 0x9b3e00));
+		// text.width = 600;
+		// text.height = 300;
+		// text.mouseEnabled = false;
+		// text.shader = new glsl.TextGLSL(1, 0x9b3e00);
 
 		// 从这里更换GLSL目标
 		bitmap.scaleX = 2;
@@ -78,16 +80,23 @@ class Main extends Sprite {
 			}
 		});
 
-		
 		var spr2:Sprite = new Sprite();
 		this.addChild(spr2);
 		var imgbitmap = Assets.getBitmapData("assets/img.png");
 		var shader = new AttributesGLSL();
-		shader.data.openfl_Texture.input = imgbitmap;
-		shader.u_bitmapData.input = imgbitmap;
+		@:privateAccess shader.bitmap.input = imgbitmap;
 		spr2.graphics.beginShaderFill(shader);
-		
-		var v1:Array<Float> = [0, 0, imgbitmap.width * 0.8, 0, imgbitmap.width, imgbitmap.height, 0, imgbitmap.height];
+
+		var v1:Array<Float> = [
+			0,
+			0,
+			imgbitmap.width * 0.8,
+			0,
+			imgbitmap.width,
+			imgbitmap.height,
+			0,
+			imgbitmap.height
+		];
 		var v2:Array<Int> = [0, 1, 2, 2, 3, 0];
 		var v3:Array<Float> = [0, 0, 1, 0, 1, 1, 0, 1];
 		spr2.graphics.drawTriangles(ofArray(v1), ofArray(v2), ofArray(v3));
@@ -98,8 +107,8 @@ class Main extends Sprite {
 		spr2.mouseEnabled = false;
 
 		// Haxe To GLSL
-		trace(Haxe2GLSL.fragmentSource);
-		trace(Haxe2GLSL.vertexSource);
+		// trace(Haxe2GLSL.fragmentSource);
+		// trace(Haxe2GLSL.vertexSource);
 
 		this.addEventListener(Event.ADDED_TO_STAGE, function(e) {
 			stage.addEventListener(MouseEvent.MOUSE_DOWN, function(e) {
@@ -109,6 +118,11 @@ class Main extends Sprite {
 				spr.stopDrag();
 			});
 		});
+
+		var fps:FPS = new FPS();
+		this.addChild(fps);
+
+		stage.frameRate = 60;
 	}
 
 	@:generic public inline static function ofArray<T>(array:Array<T>):Vector<T> {

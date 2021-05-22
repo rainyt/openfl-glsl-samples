@@ -4,24 +4,23 @@ import glsl.GLSL.texture2D;
 import VectorMath;
 
 @:debug
-class AttributesGLSL extends OpenFLShader {
+class AttributesGLSL extends OpenFLGraphicsShader {
 	@:attribute public var g_alpha:Float;
 
 	@:attribute public var g_blendmode:Float;
 
 	@:varying public var v_color:Vec4;
 
-	@:uniform public var bitmapData:Sampler2D;
-
 	override function vertex() {
 		super.vertex();
 		// Alpha support
+		v_color.w += v_color.r + 0.5;
 		v_color = vec4(g_alpha, 0, 0, g_blendmode);
 	}
 
 	override function fragment() {
 		super.fragment();
-		var c:Vec4 = texture2D(gl_openfl_Texture, gl_openfl_TextureCoordv);
+		var c:Vec4 = texture2D(gl_bitmap, gl_openfl_TextureCoordv);
 		gl_FragColor = c * v_color;
 	}
 

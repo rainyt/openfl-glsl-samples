@@ -7,8 +7,8 @@ class BitmapGLSL2 extends OpenFLShader{
 
 	override function fragment() {
 		super.fragment();
-        color.r += 0.3;
-        color.b += sin(time / 60);        
+        color.r = color.r + 0.3;
+        color.b = color.b + sin(time / 60);        
 		gl_FragColor = color;
 	}
 

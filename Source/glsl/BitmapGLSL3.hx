@@ -7,8 +7,8 @@ class BitmapGLSL3 extends OpenFLShader{
 
 	override function fragment() {
 		super.fragment();
-        color.r += sin(gl_openfl_TextureCoordv.x * 90);
-        color.r += cos(gl_openfl_TextureCoordv.y * 90);        
+        color.r = color.r + sin(gl_openfl_TextureCoordv.x * 90);
+        color.r = color.r + cos(gl_openfl_TextureCoordv.y * 90);        
 		gl_FragColor = color;
 	}
 

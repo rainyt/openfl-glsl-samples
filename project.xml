@@ -6,4 +6,6 @@
     <assets path="Assets" rename="assets"/>
     <define name="output" value="./shaders"/>
     <window allow-high-dpi="true"/>
+    <window allow-high-dpi="true" antialiasing="4" vsync="true" if="cpp || hl" />
+    <architecture name="armv7" exclude="arm64" if="android" />
 </project>
