@@ -18,6 +18,7 @@ import glsl.Haxe2GLSL;
 import glsl.VertexGLSL;
 import glsl.LightEffect;
 import glsl.LightPointRotation;
+import glsl.MouseGLSL;
 import glsl.TiledGLSL;
 import openfl.events.MouseEvent;
 import openfl.events.Event;
