@@ -2,6 +2,7 @@ import openfl.display.GraphicsShader;
 import openfl.display.FPS;
 import glsl.CircleCdGLSL;
 import glsl.S9GLSL;
+import glsl.TextGLSL;
 import openfl.text.TextFormat;
 import openfl.text.TextField;
 import glsl.CircleMaskGLSL;
