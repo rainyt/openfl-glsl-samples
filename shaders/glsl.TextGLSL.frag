@@ -9,7 +9,7 @@ bool circleCheck(vec2 v2, float len){
 	float setpY = 1. / openfl_TextureSize.y * len;
 	float checkTimes = 36.;
 	float setp = 3.14 / checkTimes;
-	for(int i = 0;i < 36;i ++ ){
+	for(int i = 0;i < 36;i ++){
 		float r = setp * float(i);
 		if(inAlpha(v2, setpX * sin(r), setpY * cos(r)) || inAlpha(v2, setpX *- sin(r), setpY *- cos(r))){
 			return true;
@@ -19,7 +19,7 @@ bool circleCheck(vec2 v2, float len){
 }
 void main(void){
 	#pragma body
-	for(int i = 0;i < 10;i ++ ){
+	for(int i = 0;i < 10;i ++){
 		if(float(i) > u_storksize){
 			break;
 		}

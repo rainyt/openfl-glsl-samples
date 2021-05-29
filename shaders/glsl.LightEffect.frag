@@ -7,7 +7,7 @@ void main(void){
 	vec3 c = vec3(0., 0., 0.);
 	float l = u_time;
 	float z = u_time;
-	for(int i = 0;i < 3;i ++ ){
+	for(int i = 0;i < 3;i ++){
 		vec2 uv = openfl_TextureCoordv;
 		vec2 p = uv;
 		p -= .5;
