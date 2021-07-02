@@ -1,3 +1,7 @@
+import openfl.geom.Matrix3D;
+import openfl.geom.Matrix;
+import glsl.GPUParticle;
+import openfl.display.BlendMode;
 import openfl.display.GraphicsShader;
 import openfl.display.FPS;
 import glsl.CircleCdGLSL;
@@ -32,6 +36,13 @@ class Main extends Sprite {
 	public function new() {
 		super();
 
+		var mat4 =new Matrix();
+		mat4.translate(100,100);
+		trace(mat4);
+
+		var d = Matrix3D;
+
+
 		var bitmap2 = new Bitmap();
 		bitmap2.bitmapData = Assets.getBitmapData("assets/3.png");
 		this.addChild(bitmap2);
@@ -52,7 +63,7 @@ class Main extends Sprite {
 
 		var spr:Sprite = new Sprite();
 		var bitmap = new Bitmap();
-		bitmap.bitmapData = Assets.getBitmapData("assets/slice.png");
+		bitmap.bitmapData = Assets.getBitmapData("assets/img.png");
 		spr.addChild(bitmap);
 		this.addChild(spr);
 
@@ -69,9 +80,10 @@ class Main extends Sprite {
 		// text.shader = new glsl.TextGLSL(1, 0x9b3e00);
 
 		// 从这里更换GLSL目标
-		bitmap.scaleX = 2;
-		bitmap.scaleY = 2;
-		bitmap.shader = new RoundMaskGLSL();
+		bitmap.width = 1200;
+		bitmap.height = 1200;
+		bitmap.shader = new GPUParticle(stage);
+		// bitmap.blendMode = BlendMode.MULTIPLY;
 		bitmap.addEventListener(Event.ENTER_FRAME, function(e) {
 			bitmap.invalidate();
 		});
