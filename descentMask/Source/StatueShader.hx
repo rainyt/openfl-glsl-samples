@@ -22,7 +22,7 @@ class StatueShader extends OpenFLShader {
 
 	public function new() {
 		super();
-		s.u_offestY.value = [0];
+		this.u_offestY.value = [0];
 	}
 
 	@:precision("highp float")
