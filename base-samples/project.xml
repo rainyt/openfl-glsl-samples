@@ -8,5 +8,5 @@
     <window allow-high-dpi="true"/>
     <window allow-high-dpi="true" antialiasing="4" vsync="true" if="cpp || hl" />
     <architecture name="armv7" exclude="arm64" if="android" />
-    <window width="1080" height="1920"/>
+    <!-- <window width="1080" height="1920"/> -->
 </project>

@@ -36,6 +36,8 @@ class Main extends Sprite {
 	public function new() {
 		super();
 
+		stage.color = 0x0;
+
 		var mat4 =new Matrix();
 		mat4.translate(100,100);
 		trace(mat4);
@@ -44,7 +46,7 @@ class Main extends Sprite {
 
 
 		var bitmap2 = new Bitmap();
-		bitmap2.bitmapData = Assets.getBitmapData("assets/3.png");
+		bitmap2.bitmapData = Assets.getBitmapData("assets/star.png");
 		this.addChild(bitmap2);
 		bitmap2.shader = new glsl.TiledGLSL(stage.stageWidth, stage.stageHeight);
 		bitmap2.width = stage.stageWidth;
