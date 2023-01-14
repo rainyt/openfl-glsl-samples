@@ -25,7 +25,7 @@ void main(void){
 		light += (copy.r + copy.g + copy.b) / 3.;
 	}
 	if(u_showout){
-		gl_FragColor = outcolor;
+		gl_FragColor = outcolor * (1. - color.a);
 	}else{
 		outcolor += color * (light / (float(times) / 8.)) * u_hdrStrength;
 		gl_FragColor = outcolor;

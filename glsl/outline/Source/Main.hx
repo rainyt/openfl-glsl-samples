@@ -87,6 +87,20 @@ class Main extends Sprite {
 		outline.u_quality.value = [10];
 		outline.u_outlineColor.value = [1, 1, 0, 1];
 		outline.u_outlineSize.value = [3];
+		outline.u_showout.value = [false];
+		text.shader = outline;
+
+		var text = new TextField();
+		this.addChild(text);
+		text.width = 800;
+		text.height = 264;
+		text.y = 100;
+		text.text = "测试文字 TEST";
+		text.setTextFormat(new TextFormat(null, 64, 0xff0000));
+		var outline = new OutlineShader();
+		outline.u_quality.value = [10];
+		outline.u_outlineColor.value = [1, 1, 0, 1];
+		outline.u_outlineSize.value = [3];
 		outline.u_showout.value = [true];
 		text.shader = outline;
 	}
@@ -153,7 +167,7 @@ class OutlineShader extends OpenFLShader {
 		}
 		// 这是挖空实现
 		if (showout) {
-			this.gl_FragColor = outcolor;
+			this.gl_FragColor = outcolor * (1 - color.a);
 		} else {
 			outcolor += color * (light / (float(times) / 8)) * hdrStrength;
 			this.gl_FragColor = outcolor;
