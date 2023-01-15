@@ -24,6 +24,7 @@ void main(void){
 		outcolor += texColor(copy, color) * (1. - color.a) * (1. - color.a) * (1. - color.a);
 		light += (copy.r + copy.g + copy.b) / 3.;
 	}
+	outcolor += u_outlineColor * vec4(light / float(times)) * u_hdrStrength;
 	if(u_showout){
 		gl_FragColor = outcolor * (1. - color.a);
 	}else{

@@ -12,6 +12,7 @@ class Main extends Sprite {
 	public function new() {
 		super();
 
+		// 普通描边
 		var bitmap = new Bitmap(Assets.getBitmapData("assets/img.png"));
 		this.addChild(bitmap);
 		bitmap.x = (stage.stageWidth - bitmap.width) / 2;
@@ -22,12 +23,16 @@ class Main extends Sprite {
 		outline.u_outlineSize.value = [3];
 		bitmap.shader = outline;
 
-		var bitmap = new Bitmap(Assets.getBitmapData("assets/me1250.png"));
+		var testimg = "assets/me1250.png";
+
+		// 普通原图
+		var bitmap = new Bitmap(Assets.getBitmapData(testimg));
 		this.addChild(bitmap);
 		bitmap.x = (stage.stageWidth - bitmap.width) / 2 - 200;
 		bitmap.y = (stage.stageHeight - bitmap.height) / 2 + 200;
 
-		var bitmap = new Bitmap(Assets.getBitmapData("assets/me1250.png"));
+		// 挖空描边
+		var bitmap = new Bitmap(Assets.getBitmapData(testimg));
 		this.addChild(bitmap);
 		bitmap.x = (stage.stageWidth - bitmap.width) / 2;
 		bitmap.y = (stage.stageHeight - bitmap.height) / 2 + 200;
@@ -38,7 +43,8 @@ class Main extends Sprite {
 		outline.u_showout.value = [true];
 		bitmap.shader = outline;
 
-		var bitmap = new Bitmap(Assets.getBitmapData("assets/me1250.png"));
+		// HDR普通描边
+		var bitmap = new Bitmap(Assets.getBitmapData(testimg));
 		this.addChild(bitmap);
 		bitmap.x = (stage.stageWidth - bitmap.width) / 2 + 200;
 		bitmap.y = (stage.stageHeight - bitmap.height) / 2 + 200;
@@ -46,11 +52,12 @@ class Main extends Sprite {
 		outline.u_quality.value = [2];
 		outline.u_hdrStrength.value = [0.3];
 		outline.u_outlineColor.value = [1, 1, 0, 1];
-		outline.u_outlineSize.value = [3];
+		outline.u_outlineSize.value = [6];
 		outline.u_showout.value = [false];
 		bitmap.shader = outline;
 
-		var bitmap = new Bitmap(Assets.getBitmapData("assets/me1250.png"));
+		// HDR无描边
+		var bitmap = new Bitmap(Assets.getBitmapData(testimg));
 		this.addChild(bitmap);
 		bitmap.x = (stage.stageWidth - bitmap.width) / 2 + 200;
 		bitmap.y = (stage.stageHeight - bitmap.height) / 2 - 100;
@@ -62,7 +69,8 @@ class Main extends Sprite {
 		outline.u_showout.value = [false];
 		bitmap.shader = outline;
 
-		var bitmap = new Bitmap(Assets.getBitmapData("assets/me1250.png"));
+		// 普通描边，无HDR
+		var bitmap = new Bitmap(Assets.getBitmapData(testimg));
 		this.addChild(bitmap);
 		bitmap.scaleX = bitmap.scaleY = 1;
 		bitmap.x = (stage.stageWidth - bitmap.width) / 2 - 200;
@@ -71,7 +79,7 @@ class Main extends Sprite {
 		outline.u_quality.value = [90];
 		outline.u_hdrStrength.value = [0.];
 		outline.u_outlineColor.value = [1, 1, 0, 1];
-		outline.u_outlineSize.value = [13];
+		outline.u_outlineSize.value = [5];
 		outline.u_showout.value = [false];
 		bitmap.shader = outline;
 
@@ -81,10 +89,11 @@ class Main extends Sprite {
 		this.addChild(text);
 		text.width = 800;
 		text.height = 264;
-		text.text = "测试文字 TEST";
+		text.mouseEnabled = false;
+		text.text = "不挖空 测试文字 TEST";
 		text.setTextFormat(new TextFormat(null, 64, 0xff0000));
 		var outline = new OutlineShader();
-		outline.u_quality.value = [10];
+		outline.u_quality.value = [2];
 		outline.u_outlineColor.value = [1, 1, 0, 1];
 		outline.u_outlineSize.value = [3];
 		outline.u_showout.value = [false];
@@ -95,7 +104,8 @@ class Main extends Sprite {
 		text.width = 800;
 		text.height = 264;
 		text.y = 100;
-		text.text = "测试文字 TEST";
+		text.mouseEnabled = false;
+		text.text = "挖空 测试文字 TEST";
 		text.setTextFormat(new TextFormat(null, 64, 0xff0000));
 		var outline = new OutlineShader();
 		outline.u_quality.value = [10];
@@ -165,6 +175,7 @@ class OutlineShader extends OpenFLShader {
 			// 光亮效果
 			light += (copy.r + copy.g + copy.b) / 3.;
 		}
+		outcolor += outlineColor * vec4(light / float(times)) * hdrStrength;
 		// 这是挖空实现
 		if (showout) {
 			this.gl_FragColor = outcolor * (1 - color.a);
